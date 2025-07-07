@@ -8,6 +8,12 @@ export default defineConfig({
   sourcemap: true,
   clean: true,
   external: ['react', 'react-dom'],
+  loader: {
+    '.tsx': 'tsx',
+  },
+  esbuildOptions(options) {
+    options.jsx = 'automatic';
+  },
   banner: {
     js: '/* React Props Debugger - Development Tool */',
   },
