@@ -1,4 +1,4 @@
-// src/react-props-debugger.tsx
+// src/index.tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
@@ -638,12 +638,12 @@ export class PropsDebugger {
   }
 }
 
-// // Auto-initialize when imported
-// if (process.env.NODE_ENV === 'development' || import.meta.env?.DEV) {
-//   // Wait for React to be ready
-//   if (document.readyState === 'loading') {
-//     document.addEventListener('DOMContentLoaded', () => new PropsDebugger());
-//   } else {
-//     setTimeout(() => new PropsDebugger(), 0);
-//   }
-// }
+// Auto-initialize when imported
+if (process.env.NODE_ENV === 'development' || (import.meta as any).env?.DEV) {
+  // Wait for React to be ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => new PropsDebugger());
+  } else {
+    setTimeout(() => new PropsDebugger(), 0);
+  }
+}
