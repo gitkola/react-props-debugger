@@ -1,0 +1,50 @@
+{
+  "name": "react-props-debugger",
+  "version": "1.0.0",
+  "description": "A development tool for debugging React component props via long-press",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"No tests yet\""
+  },
+  "keywords": [
+    "react",
+    "debugging",
+    "development",
+    "props",
+    "devtools",
+    "inspector"
+  ],
+  "author": "gitkola",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gitkola/react-props-debugger.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gitkola/react-props-debugger/issues"
+  },
+  "homepage": "https://github.com/gitkola/react-props-debugger#readme",
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.10",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.0.0"
+  }
+}
