@@ -1,16 +1,37 @@
 // src/auto-init.ts
 import { PropsDebugger } from './react-props-debugger';
 
-// Auto-initialize in development
-const isDev =
-  typeof process !== 'undefined'
-    ? process.env.NODE_ENV === 'development'
-    : false;
+console.log('[react-props-debugger] Auto-init script running');
+console.log('[react-props-debugger] Environment:', {
+  nodeEnv: process?.env?.NODE_ENV,
+  isDev: process?.env?.NODE_ENV === 'development',
+  hasWindow: typeof window !== 'undefined',
+  hasDocument: typeof document !== 'undefined',
+});
 
-if (isDev && typeof window !== 'undefined') {
+// Auto-initialize in development
+const isDev = process?.env?.NODE_ENV === 'development';
+
+if (isDev && typeof window !== 'undefined' && typeof document !== 'undefined') {
+  console.log(
+    '[react-props-debugger] Development mode detected, initializing...'
+  );
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => new PropsDebugger());
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('[react-props-debugger] DOM loaded, creating instance');
+      new PropsDebugger();
+    });
   } else {
-    setTimeout(() => new PropsDebugger(), 0);
+    setTimeout(() => {
+      console.log('[react-props-debugger] Creating instance immediately');
+      new PropsDebugger();
+    }, 0);
   }
+} else {
+  console.log('[react-props-debugger] Skipping initialization:', {
+    isDev,
+    hasWindow: typeof window !== 'undefined',
+    hasDocument: typeof document !== 'undefined',
+  });
 }
